@@ -1,6 +1,7 @@
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import ListView, DetailView, UpdateView, CreateView, DeleteView
+from django.views.generic import (ListView, DetailView, UpdateView,
+                                  CreateView, DeleteView)
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse
 from django.utils import timezone
@@ -8,10 +9,7 @@ from django.db.models import Count
 
 from .models import Post, Category, User, Comment
 from .forms import PostForm, ProfileForm, CommentForm
-import datetime
-import pytz
 
-# Create your views here.
 appname = 'blog'
 
 COUNT_POST_ON_PAGE = 10
