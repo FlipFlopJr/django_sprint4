@@ -150,6 +150,9 @@ class PostUpdateView(PostUpdateDeleteMixin, LoginRequiredMixin, UpdateView):
 
 
 class PostDeleteView(PostUpdateDeleteMixin, LoginRequiredMixin, DeleteView):
+    def get_object(self, queryset=None):
+        return get_object_or_404(Post, pk=self.kwargs['post_id'])
+
     def get_context_data(self, **kwargs):
         return dict(**super().get_context_data(**kwargs),
                     form=PostForm(instance=self.object))
