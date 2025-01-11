@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.urls import reverse
 
 User = get_user_model()
 
@@ -69,6 +70,11 @@ class Post(BaseModel):
         blank=False
     )
     image = models.ImageField('Фото', upload_to='post_images/', blank=True)
+
+    def get_absolute_url(self):
+        return reverse(
+            'blog:post_detail', args=[self.pk]
+        )
 
     def __str__(self):
         return self.title
